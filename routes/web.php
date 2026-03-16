@@ -22,7 +22,15 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('elevi', ElevController::class);
     Route::resource('materii', MaterieController::class);
     Route::resource('profesori', ProfesorController::class);
-    Route::resource('note', NotaController::class);
+    
+    // Rute explicit pentru note pentru a evita problemele cu model binding
+    Route::get('/note', [NotaController::class, 'index'])->name('note.index');
+    Route::get('/note/create', [NotaController::class, 'create'])->name('note.create');
+    Route::post('/note', [NotaController::class, 'store'])->name('note.store');
+    Route::get('/note/{nota}/edit', [NotaController::class, 'edit'])->name('note.edit');
+    Route::put('/note/{nota}', [NotaController::class, 'update'])->name('note.update');
+    Route::get('/note/{nota}', [NotaController::class, 'show'])->name('note.show');
+    Route::delete('/note/{nota}', [NotaController::class, 'destroy'])->name('note.destroy');
     
     // Rute adiționale pentru rapoarte
     Route::get('/rapoarte/clase', [DashboardController::class, 'raportClase'])->name('rapoarte.clase');
