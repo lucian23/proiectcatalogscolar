@@ -5,7 +5,7 @@
 
 @section('content')
     <div class="mb-6 flex justify-between items-center">
-        <a href="{{ route('elevi.show', $elev) }}" class="text-blue-600 hover:text-blue-800">
+        <a href="{{ route('elevi.show', $elev->id) }}" class="text-blue-600 hover:text-blue-800">
             <i class="fas fa-arrow-left mr-2"></i> Înapoi la fișa elevului
         </a>
         

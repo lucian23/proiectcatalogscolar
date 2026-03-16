@@ -10,7 +10,7 @@
                 <h3 class="text-lg font-semibold">Modifică Date Elev</h3>
             </div>
             
-            <form action="{{ route('elevi.update', $elev) }}" method="POST" class="p-6">
+            <form action="{{ route('elevi.update', $elev->id) }}" method="POST" class="p-6">
                 @csrf
                 @method('PUT')
                 

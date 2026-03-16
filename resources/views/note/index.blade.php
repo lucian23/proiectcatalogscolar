@@ -66,7 +66,7 @@
                                 </span>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                <a href="{{ route('note.show', $nota) }}" class="text-blue-600 hover:text-blue-900 mr-3" title="Vezi detalii">
+                                <a href="{{ route('note.show', $nota->id) }}" class="text-blue-600 hover:text-blue-900 mr-3" title="Vezi detalii">
                                     <i class="fas fa-eye"></i>
                                 </a>
                                 <a href="{{ route('note.edit', $nota->id) }}" class="text-yellow-600 hover:text-yellow-900 mr-3" title="Editează">
