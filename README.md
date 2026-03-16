@@ -63,8 +63,8 @@ Catalog Școlar Online este o aplicație web pentru gestionarea activităților 
 ### 1. Clonează repository-ul
 
 ```bash
-git clone https://github.com/USERNAME/catalog-scolar.git
-cd catalog-scolar
+git clone https://github.com/lucian23/proiectcatalogscolar.git
+cd proiectcatalogscolar
 ```
 
 ### 2. Instalează dependențele PHP
@@ -180,7 +180,7 @@ Contribuțiile sunt binevenite! Te rog să:
 
 ## 📧 Contact
 
-Pentru întrebări sau sugestii, deschide un [Issue](https://github.com/USERNAME/catalog-scolar/issues).
+Pentru întrebări sau sugestii, deschide un [Issue](https://github.com/lucian23/proiectcatalogscolar/issues).
 
 ---
 
