@@ -57,7 +57,7 @@
             </div>
             
             <div class="mt-6 flex space-x-3">
-                <a href="{{ route('elevi.edit', $elev) }}" class="flex-1 bg-yellow-500 hover:bg-yellow-600 text-white text-center px-4 py-2 rounded">
+                <a href="{{ route('elevi.edit', $elev->id) }}" class="flex-1 bg-yellow-500 hover:bg-yellow-600 text-white text-center px-4 py-2 rounded">
                     <i class="fas fa-edit mr-2"></i> Editează
                 </a>
                 
@@ -156,7 +156,7 @@
             <div class="bg-white rounded-lg shadow">
                 <div class="px-6 py-4 border-b flex justify-between items-center">
                     <h3 class="text-lg font-semibold">Istoric Note</h3>
-                    <a href="{{ route('rapoarte.elev', $elev) }}" class="text-blue-600 hover:text-blue-800 text-sm">Vezi raport complet →</a>
+                    <a href="{{ route('rapoarte.elev', $elev->id) }}" class="text-blue-600 hover:text-blue-800 text-sm">Vezi raport complet →</a>
                 </div>
                 
                 <div class="overflow-x-auto">

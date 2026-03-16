@@ -48,7 +48,7 @@
             </div>
             
             <div class="mt-6 flex space-x-3">
-                <a href="{{ route('materii.edit', $materie) }}" class="flex-1 bg-yellow-500 hover:bg-yellow-600 text-white text-center px-4 py-2 rounded">
+                <a href="{{ route('materii.edit', $materie->id) }}" class="flex-1 bg-yellow-500 hover:bg-yellow-600 text-white text-center px-4 py-2 rounded">
                     <i class="fas fa-edit mr-2"></i> Editează
                 </a>
             </div>
@@ -65,7 +65,7 @@
                 <div class="p-6">
                     <div class="flex flex-wrap gap-2">
                         @forelse($materie->profesori as $profesor)
-                            <a href="{{ route('profesori.show', $profesor) }}" class="px-4 py-2 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium hover:bg-indigo-200">
+                            <a href="{{ route('profesori.show', $profesor->id) }}" class="px-4 py-2 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium hover:bg-indigo-200">
                                 {{ $profesor->nume_complet }}
                             </a>
                         @empty
