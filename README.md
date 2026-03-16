@@ -1,59 +1,187 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📚 Catalog Școlar Online
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistem modern de management școlar construit cu Laravel 12 și Tailwind CSS.
 
-## About Laravel
+![Laravel](https://img.shields.io/badge/Laravel-12-red?style=flat-square&logo=laravel)
+![PHP](https://img.shields.io/badge/PHP-8.3+-blue?style=flat-square&logo=php)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38bdf8?style=flat-square&logo=tailwindcss)
+![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🎯 Descriere
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Catalog Școlar Online este o aplicație web pentru gestionarea activităților școlare, dezvoltată special pentru școlile din România. Permite profesorilor și administrației să gestioneze notele, elevii, clasele și materiile într-un mod eficient și modern.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## ✨ Funcționalități
 
-## Learning Laravel
+### Gestionare Elevi
+- Înscriere și administrare elevi
+- Căutare și filtrare după clasă
+- Fișă detaliată cu situația școlară
+- Raport complet pentru fiecare elev
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### Gestionare Clase
+- Creare și editare clase (nume, an, profil)
+- Vizualizare elevi din clasă
+- Statistici pe clasă (medie, promovabilitate)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Gestionare Profesori
+- Adăugare profesori cu grade didactice
+- Atribuire materii predate
+- Istoric note acordate
 
-## Laravel Sponsors
+### Gestionare Materii
+- Materii obligatorii și opționale
+- Cod și descriere pentru fiecare materie
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Sistem de Note
+- Adăugare note curente și teze
+- Calcul automat al mediilor
+- Istoric note pe elev și materie
 
-### Premium Partners
+### Rapoarte
+- Situație generală pe clase
+- Raport complet pentru fiecare elev
+- Statistici de promovabilitate
+- Export pentru tipărire
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### Interfață Modernă
+- Design responsive (desktop și mobil)
+- Temă curată cu Tailwind CSS
+- Navigare intuitivă
+- Mesaje de confirmare și eroare
 
-## Contributing
+## 📋 Cerințe Sistem
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- PHP >= 8.2
+- Composer
+- Node.js >= 18
+- SQLite sau MySQL
+- Laragon / XAMPP / Valet (pentru development local)
 
-## Code of Conduct
+## 🚀 Instalare
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 1. Clonează repository-ul
 
-## Security Vulnerabilities
+```bash
+git clone https://github.com/USERNAME/catalog-scolar.git
+cd catalog-scolar
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 2. Instalează dependențele PHP
 
-## License
+```bash
+composer install
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 3. Instalează dependențele Node.js
+
+```bash
+npm install
+```
+
+### 4. Configurează mediul
+
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+### 5. Configurează baza de date
+
+Editează `.env` pentru baza de date:
+
+```env
+# Pentru SQLite (implicit)
+DB_CONNECTION=sqlite
+DB_DATABASE=database/database.sqlite
+
+# Sau pentru MySQL
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=catalog_scolar
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### 6. Rulează migrările și seed-urile
+
+```bash
+php artisan migrate --seed
+```
+
+### 7. Pornește serverul de development
+
+```bash
+php artisan serve
+```
+
+Accesează aplicația la: `http://localhost:8000`
+
+## 👤 Credențiale Demo
+
+După ce rulezi seed-urile, poți accesa aplicația cu:
+
+- **Email:** `admin@scoala.ro`
+- **Parolă:** `password`
+
+## 📸 Screenshots
+
+### Dashboard
+![Dashboard](docs/screenshots/dashboard.png)
+
+### Lista Elevi
+![Elevi](docs/screenshots/elevi.png)
+
+### Fișă Elev
+![Fisa Elev](docs/screenshots/fisa-elev.png)
+
+### Raport Clase
+![Rapoarte](docs/screenshots/rapoarte.png)
+
+## 🏗️ Structura Proiectului
+
+```
+catalog-scolar/
+├── app/
+│   ├── Http/Controllers/    # Controllerele aplicației
+│   ├── Models/               # Modelele Eloquent
+│   └── ...
+├── database/
+│   ├── migrations/           # Migrările bazei de date
+│   └── seeders/              # Seed-uri pentru date demo
+├── resources/
+│   └── views/                # Blade templates
+├── routes/
+│   └── web.php               # Rutele aplicației
+└── ...
+```
+
+## 🔧 Tehnologii Folosite
+
+- **Backend:** Laravel 12, PHP 8.3
+- **Frontend:** Tailwind CSS 3.4, Blade Templates
+- **Database:** SQLite / MySQL
+- **Icons:** Font Awesome 6
+
+## 📝 Licență
+
+Acest proiect este open-source sub licența [MIT License](LICENSE).
+
+## 🤝 Contribuții
+
+Contribuțiile sunt binevenite! Te rog să:
+
+1. Fork proiectul
+2. Creează un branch pentru feature (`git checkout -b feature/AmazingFeature`)
+3. Commit schimbările (`git commit -m 'Add some AmazingFeature'`)
+4. Push la branch (`git push origin feature/AmazingFeature`)
+5. Deschide un Pull Request
+
+## 📧 Contact
+
+Pentru întrebări sau sugestii, deschide un [Issue](https://github.com/USERNAME/catalog-scolar/issues).
+
+---
+
+Dezvoltat cu ❤️ pentru școlile din România

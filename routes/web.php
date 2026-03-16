@@ -18,10 +18,10 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     
-    Route::resource('clase', ClasaController::class);
-    Route::resource('elevi', ElevController::class);
-    Route::resource('materii', MaterieController::class);
-    Route::resource('profesori', ProfesorController::class);
+    Route::resource('clase', ClasaController::class)->parameter('clase', 'clasa');
+    Route::resource('elevi', ElevController::class)->parameter('elevi', 'elev');
+    Route::resource('materii', MaterieController::class)->parameter('materii', 'materie');
+    Route::resource('profesori', ProfesorController::class)->parameter('profesori', 'profesor');
     
     // Rute explicit pentru note pentru a evita problemele cu model binding
     Route::get('/note', [NotaController::class, 'index'])->name('note.index');

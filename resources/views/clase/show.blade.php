@@ -43,7 +43,7 @@
             </div>
             
             <div class="mt-6 flex space-x-3">
-                <a href="{{ route('clase.edit', $clasa->id) }}" class="flex-1 bg-yellow-500 hover:bg-yellow-600 text-white text-center px-4 py-2 rounded">
+                <a href="{{ route('clase.edit', $clasa) }}" class="flex-1 bg-yellow-500 hover:bg-yellow-600 text-white text-center px-4 py-2 rounded">
                     <i class="fas fa-edit mr-2"></i> Editează
                 </a>
                 

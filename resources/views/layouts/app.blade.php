@@ -86,9 +86,26 @@
                     
                     <div class="flex items-center space-x-4">
                         <span class="text-sm text-gray-500">{{ now()->format('d.m.Y') }}</span>
-                        <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white text-sm font-bold">
-                            A
+                        @auth
+                        <div class="relative" id="user-menu">
+                            <button onclick="toggleUserMenu()" class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white text-sm font-bold cursor-pointer hover:bg-blue-700 transition-colors">
+                                {{ auth()->user()->name ?? 'A' }}
+                            </button>
+                            <div id="user-dropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden z-50">
+                                <div class="px-4 py-2 border-b">
+                                    <p class="text-sm font-medium text-gray-700">{{ auth()->user()->name ?? 'Admin' }}</p>
+                                    <p class="text-xs text-gray-500">{{ auth()->user()->email ?? 'admin@scoala.ro' }}</p>
+                                </div>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button type="submit" class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 flex items-center">
+                                        <i class="fas fa-sign-out-alt mr-2"></i>
+                                        Deconectare
+                                    </button>
+                                </form>
+                            </div>
                         </div>
+                        @endauth
                     </div>
                 </div>
             </header>
@@ -125,6 +142,24 @@
             </footer>
         </div>
     </div>
+    
+    @auth
+    <script>
+        function toggleUserMenu() {
+            const dropdown = document.getElementById('user-dropdown');
+            dropdown.classList.toggle('hidden');
+        }
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('user-menu');
+            const dropdown = document.getElementById('user-dropdown');
+            if (menu && dropdown && !menu.contains(event.target)) {
+                dropdown.classList.add('hidden');
+            }
+        });
+    </script>
+    @endauth
     
     @stack('scripts')
 </body>

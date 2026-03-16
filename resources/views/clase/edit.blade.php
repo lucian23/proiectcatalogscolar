@@ -10,7 +10,7 @@
                 <h3 class="text-lg font-semibold">Modifică Informații Clasă</h3>
             </div>
             
-            <form action="{{ route('clase.update', $clasa->id) }}" method="POST" class="p-6">
+            <form action="{{ route('clase.update', $clasa) }}" method="POST" class="p-6">
                 @csrf
                 @method('PUT')
                 
