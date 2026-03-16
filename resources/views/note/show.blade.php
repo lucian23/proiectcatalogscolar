@@ -16,11 +16,11 @@
                 <h3 class="text-lg font-semibold">Detalii Notă</h3>
                 
                 <div class="flex space-x-2">
-                    <a href="{{ route('note.edit', $nota) }}" class="text-yellow-600 hover:text-yellow-800">
+                    <a href="{{ route('note.edit', $nota->id) }}" class="text-yellow-600 hover:text-yellow-800">
                         <i class="fas fa-edit"></i> Editează
                     </a>
                     
-                    <form action="{{ route('note.destroy', $nota) }}" method="POST" class="inline" onsubmit="return confirm('Ești sigur că vrei să ștergi această notă?');">
+                    <form action="{{ route('note.destroy', $nota->id) }}" method="POST" class="inline" onsubmit="return confirm('Ești sigur că vrei să ștergi această notă?');">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="text-red-600 hover:text-red-800">

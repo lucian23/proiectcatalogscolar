@@ -10,7 +10,7 @@
                 <h3 class="text-lg font-semibold">Modifică Informații Notă</h3>
             </div>
             
-            <form action="{{ route('note.update', $nota) }}" method="POST" class="p-6">
+            <form action="{{ route('note.update', $nota->id) }}" method="POST" class="p-6">
                 @csrf
                 @method('PUT')
                 

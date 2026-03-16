@@ -45,13 +45,13 @@
                                 </span>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                <a href="{{ route('clase.show', $clasa) }}" class="text-blue-600 hover:text-blue-900 mr-3" title="Vezi detalii">
+                                <a href="{{ route('clase.show', $clasa->id) }}" class="text-blue-600 hover:text-blue-900 mr-3" title="Vezi detalii">
                                     <i class="fas fa-eye"></i>
                                 </a>
-                                <a href="{{ route('clase.edit', $clasa) }}" class="text-yellow-600 hover:text-yellow-900 mr-3" title="Editează">
+                                <a href="{{ route('clase.edit', $clasa->id) }}" class="text-yellow-600 hover:text-yellow-900 mr-3" title="Editează">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <form action="{{ route('clase.destroy', $clasa) }}" method="POST" class="inline" onsubmit="return confirm('Ești sigur că vrei să ștergi această clasă?');">
+                                <form action="{{ route('clase.destroy', $clasa->id) }}" method="POST" class="inline" onsubmit="return confirm('Ești sigur că vrei să ștergi această clasă?');">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="text-red-600 hover:text-red-900" title="Șterge">
