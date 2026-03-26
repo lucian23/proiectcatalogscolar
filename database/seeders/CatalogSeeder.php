@@ -5,46 +5,49 @@ namespace Database\Seeders;
 use App\Models\Clasa;
 use App\Models\Elev;
 use App\Models\Materie;
-use App\Models\Profesor;
 use App\Models\Nota;
+use App\Models\Profesor;
 use Illuminate\Database\Seeder;
 
 class CatalogSeeder extends Seeder
 {
+    /**
+     * Run the database seeds.
+     */
     public function run(): void
     {
-        // Creăm clase
+        // CreÄƒm clase
         $clase = [
             ['nume' => 'A', 'an' => 9, 'profil' => 'Real', 'an_scolar' => 2025],
             ['nume' => 'B', 'an' => 9, 'profil' => 'Uman', 'an_scolar' => 2025],
             ['nume' => 'C', 'an' => 10, 'profil' => 'Real', 'an_scolar' => 2025],
             ['nume' => 'D', 'an' => 10, 'profil' => 'Uman', 'an_scolar' => 2025],
-            ['nume' => 'E', 'an' => 11, 'profil' => 'Științe', 'an_scolar' => 2025],
+            ['nume' => 'E', 'an' => 11, 'profil' => 'È˜tiinÈ›e', 'an_scolar' => 2025],
         ];
 
         foreach ($clase as $clasa) {
             Clasa::create($clasa);
         }
 
-        // Creăm materii
+        // CreÄƒm materii
         $materii = [
-            ['nume' => 'Matematică', 'cod' => 'MAT', 'obligatorie' => true],
-            ['nume' => 'Limba Română', 'cod' => 'ROM', 'obligatorie' => true],
-            ['nume' => 'Limba Engleză', 'cod' => 'ENG', 'obligatorie' => true],
-            ['nume' => 'Fizică', 'cod' => 'FIZ', 'obligatorie' => true],
+            ['nume' => 'MatematicÄƒ', 'cod' => 'MAT', 'obligatorie' => true],
+            ['nume' => 'Limba RomÃ¢nÄƒ', 'cod' => 'ROM', 'obligatorie' => true],
+            ['nume' => 'Limba EnglezÄƒ', 'cod' => 'ENG', 'obligatorie' => true],
+            ['nume' => 'FizicÄƒ', 'cod' => 'FIZ', 'obligatorie' => true],
             ['nume' => 'Chimie', 'cod' => 'CHI', 'obligatorie' => true],
             ['nume' => 'Biologie', 'cod' => 'BIO', 'obligatorie' => true],
             ['nume' => 'Istorie', 'cod' => 'IST', 'obligatorie' => true],
             ['nume' => 'Geografie', 'cod' => 'GEO', 'obligatorie' => true],
-            ['nume' => 'Informatică', 'cod' => 'INFO', 'obligatorie' => false],
-            ['nume' => 'Educație Fizică', 'cod' => 'EDF', 'obligatorie' => true],
+            ['nume' => 'InformaticÄƒ', 'cod' => 'INFO', 'obligatorie' => false],
+            ['nume' => 'EducaÈ›ie FizicÄƒ', 'cod' => 'EDF', 'obligatorie' => true],
         ];
 
         foreach ($materii as $materie) {
             Materie::create($materie);
         }
 
-        // Creăm profesori
+        // CreÄƒm profesori
         $profesori = [
             ['nume' => 'Popescu', 'prenume' => 'Ion', 'email' => 'ion.popescu@scoala.ro', 'grad_didactic' => 'I'],
             ['nume' => 'Ionescu', 'prenume' => 'Maria', 'email' => 'maria.ionescu@scoala.ro', 'grad_didactic' => 'II'],
@@ -58,13 +61,13 @@ class CatalogSeeder extends Seeder
         }
 
         // Asociem profesori cu materii
-        Profesor::find(1)->materii()->sync([1, 4]); // Popescu - Matematică, Fizică
-        Profesor::find(2)->materii()->sync([2]);    // Ionescu - Română
-        Profesor::find(3)->materii()->sync([3, 9]); // Georgescu - Engleză, Informatică
+        Profesor::find(1)->materii()->sync([1, 4]); // Popescu - MatematicÄƒ, FizicÄƒ
+        Profesor::find(2)->materii()->sync([2]); // Ionescu - RomÃ¢nÄƒ
+        Profesor::find(3)->materii()->sync([3, 9]); // Georgescu - EnglezÄƒ, InformaticÄƒ
         Profesor::find(4)->materii()->sync([5, 6]); // Marin - Chimie, Biologie
         Profesor::find(5)->materii()->sync([7, 8]); // Dumitrescu - Istorie, Geografie
 
-        // Creăm elevi
+        // CreÄƒm elevi
         $eleviClasaA = [
             ['nume' => 'Andrei', 'prenume' => 'Mihai', 'numar_matricol' => '9001'],
             ['nume' => 'Barbu', 'prenume' => 'Ana', 'numar_matricol' => '9002'],
@@ -81,21 +84,23 @@ class CatalogSeeder extends Seeder
             ]));
         }
 
-        // Adăugăm note pentru elevi
+        // AdÄƒugÄƒm note pentru elevi (doar note valide: 5.0 - 9.99)
         $elevi = Elev::all();
         $materiiIds = Materie::pluck('id');
         $profesoriIds = Profesor::pluck('id');
 
         foreach ($elevi as $elev) {
             foreach ($materiiIds as $materieId) {
-                // Adăugăm 2-3 note pentru fiecare materie
+                // AdÄƒugÄƒm 2-3 note pentru fiecare materie
                 $nrNote = rand(2, 3);
                 for ($i = 0; $i < $nrNote; $i++) {
+                    // Note Ã®ntre 5.0 È™i 9.99 (decimal 3,2 acceptÄƒ max 9.99)
+                    $nota = rand(50, 99) / 10;
                     Nota::create([
                         'elev_id' => $elev->id,
                         'materie_id' => $materieId,
                         'profesor_id' => $profesoriIds->random(),
-                        'nota' => rand(50, 100) / 10, // Note între 5.0 și 10.0
+                        'nota' => $nota,
                         'tip' => $i === 0 ? 'teza' : 'curenta',
                         'data' => now()->subDays(rand(1, 60)),
                     ]);
