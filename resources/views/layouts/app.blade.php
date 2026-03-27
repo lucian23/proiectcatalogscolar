@@ -19,23 +19,50 @@
         .sidebar-link.active {
             @apply bg-blue-50 text-blue-600 border-r-4 border-blue-600;
         }
+        
+        /* Mobile sidebar animation */
+        #sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        #sidebar.hidden-mobile {
+            transform: translateX(-100%);
+        }
+        
+        #sidebar-overlay {
+            transition: opacity 0.3s ease-in-out;
+        }
+        
+        @media (min-width: 768px) {
+            #sidebar {
+                transform: translateX(0) !important;
+            }
+        }
     </style>
     
     @stack('styles')
 </head>
 <body class="bg-gray-100">
     <div class="min-h-screen flex">
+        <!-- Mobile Sidebar Overlay -->
+        <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden" onclick="toggleSidebar()"></div>
+        
         <!-- Sidebar -->
-        <aside class="w-64 bg-white shadow-lg">
+        <aside id="sidebar" class="w-64 bg-white shadow-lg fixed md:relative h-full z-50 hidden-mobile md:transform-none">
             <div class="p-6 border-b">
-                <h1 class="text-2xl font-bold text-blue-600">
-                    <i class="fas fa-graduation-cap mr-2"></i>
-                    Catalog Școlar
-                </h1>
-                <p class="text-sm text-gray-500 mt-1">Sistem de management școlar</p>
+                <div class="flex justify-between items-center">
+                    <h1 class="text-xl md:text-2xl font-bold text-blue-600">
+                        <i class="fas fa-graduation-cap mr-2"></i>
+                        <span class="hidden sm:inline">Catalog </span>Școlar
+                    </h1>
+                    <button onclick="toggleSidebar()" class="md:hidden text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <p class="text-sm text-gray-500 mt-1 hidden md:block">Sistem de management școlar</p>
             </div>
             
-            <nav class="mt-6">
+            <nav class="mt-4 md:mt-6">
                 <a href="{{ route('dashboard') }}" class="sidebar-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                     <i class="fas fa-home w-6"></i>
                     <span>Dashboard</span>
@@ -66,7 +93,7 @@
                     <span>Note</span>
                 </a>
                 
-                <div class="border-t mt-6 pt-6">
+                <div class="border-t mt-4 md:mt-6 pt-4 md:pt-6">
                     <p class="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Rapoarte</p>
                     
                     <a href="{{ route('rapoarte.clase') }}" class="sidebar-link {{ request()->routeIs('rapoarte.clase') ? 'active' : '' }}">
@@ -78,14 +105,20 @@
         </aside>
         
         <!-- Main Content -->
-        <div class="flex-1 flex flex-col">
+        <div class="flex-1 flex flex-col w-full">
             <!-- Header -->
-            <header class="bg-white shadow-sm">
-                <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-                    <h2 class="text-xl font-semibold text-gray-800">@yield('header', 'Dashboard')</h2>
+            <header class="bg-white shadow-sm sticky top-0 z-30">
+                <div class="max-w-7xl mx-auto px-3 md:px-4 py-3 md:py-4 flex justify-between items-center">
+                    <div class="flex items-center space-x-3">
+                        <!-- Mobile menu button -->
+                        <button onclick="toggleSidebar()" class="md:hidden text-gray-600 hover:text-gray-800 p-2 -ml-2">
+                            <i class="fas fa-bars text-xl"></i>
+                        </button>
+                        <h2 class="text-lg md:text-xl font-semibold text-gray-800 truncate">@yield('header', 'Dashboard')</h2>
+                    </div>
                     
-                    <div class="flex items-center space-x-4">
-                        <span class="text-sm text-gray-500">{{ now()->format('d.m.Y') }}</span>
+                    <div class="flex items-center space-x-2 md:space-x-4">
+                        <span class="text-sm text-gray-500 hidden sm:inline">{{ now()->format('d.m.Y') }}</span>
                         @auth
                         <div class="relative" id="user-menu">
                             <button onclick="toggleUserMenu()" class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white text-sm font-bold cursor-pointer hover:bg-blue-700 transition-colors">
@@ -150,6 +183,14 @@
             dropdown.classList.toggle('hidden');
         }
         
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            
+            sidebar.classList.toggle('hidden-mobile');
+            overlay.classList.toggle('hidden');
+        }
+        
         // Close dropdown when clicking outside
         document.addEventListener('click', function(event) {
             const menu = document.getElementById('user-menu');
@@ -157,6 +198,15 @@
             if (menu && dropdown && !menu.contains(event.target)) {
                 dropdown.classList.add('hidden');
             }
+        });
+        
+        // Close sidebar when navigating on mobile
+        document.querySelectorAll('#sidebar a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth < 768) {
+                    toggleSidebar();
+                }
+            });
         });
     </script>
     @endauth

@@ -5,84 +5,84 @@
 
 @section('content')
     <!-- Statistici -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
-        <div class="bg-white rounded-lg shadow p-6">
+    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-3 md:gap-4 mb-6 md:mb-8">
+        <div class="bg-white rounded-lg shadow p-4 md:p-6">
             <div class="flex items-center">
-                <div class="p-3 rounded-full bg-blue-100 text-blue-600">
-                    <i class="fas fa-chalkboard text-xl"></i>
+                <div class="p-2 md:p-3 rounded-full bg-blue-100 text-blue-600">
+                    <i class="fas fa-chalkboard text-lg md:text-xl"></i>
                 </div>
-                <div class="ml-4">
-                    <p class="text-sm text-gray-500">Total Clase</p>
-                    <p class="text-2xl font-bold">{{ $statistici['total_clase'] }}</p>
+                <div class="ml-3 md:ml-4">
+                    <p class="text-xs md:text-sm text-gray-500">Clase</p>
+                    <p class="text-xl md:text-2xl font-bold">{{ $statistici['total_clase'] }}</p>
                 </div>
             </div>
         </div>
         
-        <div class="bg-white rounded-lg shadow p-6">
+        <div class="bg-white rounded-lg shadow p-4 md:p-6">
             <div class="flex items-center">
-                <div class="p-3 rounded-full bg-green-100 text-green-600">
-                    <i class="fas fa-users text-xl"></i>
+                <div class="p-2 md:p-3 rounded-full bg-green-100 text-green-600">
+                    <i class="fas fa-users text-lg md:text-xl"></i>
                 </div>
-                <div class="ml-4">
-                    <p class="text-sm text-gray-500">Elevi Activi</p>
-                    <p class="text-2xl font-bold">{{ $statistici['total_elevi'] }}</p>
+                <div class="ml-3 md:ml-4">
+                    <p class="text-xs md:text-sm text-gray-500">Elevi</p>
+                    <p class="text-xl md:text-2xl font-bold">{{ $statistici['total_elevi'] }}</p>
                 </div>
             </div>
         </div>
         
-        <div class="bg-white rounded-lg shadow p-6">
+        <div class="bg-white rounded-lg shadow p-4 md:p-6">
             <div class="flex items-center">
-                <div class="p-3 rounded-full bg-purple-100 text-purple-600">
-                    <i class="fas fa-book text-xl"></i>
+                <div class="p-2 md:p-3 rounded-full bg-purple-100 text-purple-600">
+                    <i class="fas fa-book text-lg md:text-xl"></i>
                 </div>
-                <div class="ml-4">
-                    <p class="text-sm text-gray-500">Materii</p>
-                    <p class="text-2xl font-bold">{{ $statistici['total_materii'] }}</p>
+                <div class="ml-3 md:ml-4">
+                    <p class="text-xs md:text-sm text-gray-500">Materii</p>
+                    <p class="text-xl md:text-2xl font-bold">{{ $statistici['total_materii'] }}</p>
                 </div>
             </div>
         </div>
         
-        <div class="bg-white rounded-lg shadow p-6">
+        <div class="bg-white rounded-lg shadow p-4 md:p-6">
             <div class="flex items-center">
-                <div class="p-3 rounded-full bg-yellow-100 text-yellow-600">
-                    <i class="fas fa-chalkboard-teacher text-xl"></i>
+                <div class="p-2 md:p-3 rounded-full bg-yellow-100 text-yellow-600">
+                    <i class="fas fa-chalkboard-teacher text-lg md:text-xl"></i>
                 </div>
-                <div class="ml-4">
-                    <p class="text-sm text-gray-500">Profesori</p>
-                    <p class="text-2xl font-bold">{{ $statistici['total_profesori'] }}</p>
+                <div class="ml-3 md:ml-4">
+                    <p class="text-xs md:text-sm text-gray-500">Profesori</p>
+                    <p class="text-xl md:text-2xl font-bold">{{ $statistici['total_profesori'] }}</p>
                 </div>
             </div>
         </div>
         
-        <div class="bg-white rounded-lg shadow p-6">
+        <div class="bg-white rounded-lg shadow p-4 md:p-6 col-span-2 sm:col-span-1">
             <div class="flex items-center">
-                <div class="p-3 rounded-full bg-red-100 text-red-600">
-                    <i class="fas fa-star text-xl"></i>
+                <div class="p-2 md:p-3 rounded-full bg-red-100 text-red-600">
+                    <i class="fas fa-star text-lg md:text-xl"></i>
                 </div>
-                <div class="ml-4">
-                    <p class="text-sm text-gray-500">Total Note</p>
-                    <p class="text-2xl font-bold">{{ $statistici['total_note'] }}</p>
+                <div class="ml-3 md:ml-4">
+                    <p class="text-xs md:text-sm text-gray-500">Note</p>
+                    <p class="text-xl md:text-2xl font-bold">{{ $statistici['total_note'] }}</p>
                 </div>
             </div>
         </div>
     </div>
     
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8">
         <!-- Clase -->
         <div class="bg-white rounded-lg shadow">
-            <div class="px-6 py-4 border-b flex justify-between items-center">
-                <h3 class="text-lg font-semibold">Clase</h3>
+            <div class="px-4 md:px-6 py-3 md:py-4 border-b flex justify-between items-center">
+                <h3 class="text-base md:text-lg font-semibold">Clase</h3>
                 <a href="{{ route('clase.index') }}" class="text-blue-600 hover:text-blue-800 text-sm">Vezi toate →</a>
             </div>
-            <div class="p-6">
-                <div class="space-y-3">
+            <div class="p-4 md:p-6">
+                <div class="space-y-2 md:space-y-3">
                     @forelse($clase as $clasa)
-                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
-                            <div>
-                                <span class="font-medium">{{ $clasa->nume_complet }}</span>
-                                <span class="text-sm text-gray-500">({{ $clasa->an_scolar }})</span>
+                        <div class="flex justify-between items-center p-2 md:p-3 bg-gray-50 rounded">
+                            <div class="min-w-0 flex-1">
+                                <span class="font-medium text-sm md:text-base truncate">{{ $clasa->nume_complet }}</span>
+                                <span class="text-xs md:text-sm text-gray-500">({{ $clasa->an_scolar }})</span>
                             </div>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded ml-2 whitespace-nowrap">
                                 {{ $clasa->elevi_count }} elevi
                             </span>
                         </div>
@@ -95,19 +95,19 @@
         
         <!-- Elevi Recenți -->
         <div class="bg-white rounded-lg shadow">
-            <div class="px-6 py-4 border-b flex justify-between items-center">
-                <h3 class="text-lg font-semibold">Elevi Recenți</h3>
+            <div class="px-4 md:px-6 py-3 md:py-4 border-b flex justify-between items-center">
+                <h3 class="text-base md:text-lg font-semibold">Elevi Recenți</h3>
                 <a href="{{ route('elevi.index') }}" class="text-blue-600 hover:text-blue-800 text-sm">Vezi toți →</a>
             </div>
-            <div class="p-6">
-                <div class="space-y-3">
+            <div class="p-4 md:p-6">
+                <div class="space-y-2 md:space-y-3">
                     @forelse($elevi_recenți as $elev)
-                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
-                            <div>
-                                <p class="font-medium">{{ $elev->nume_complet }}</p>
-                                <p class="text-sm text-gray-500">{{ $elev->clasa->nume_complet ?? 'Fără clasă' }}</p>
+                        <div class="flex justify-between items-center p-2 md:p-3 bg-gray-50 rounded">
+                            <div class="min-w-0 flex-1">
+                                <p class="font-medium text-sm md:text-base truncate">{{ $elev->nume_complet }}</p>
+                                <p class="text-xs md:text-sm text-gray-500">{{ $elev->clasa->nume_complet ?? 'Fără clasă' }}</p>
                             </div>
-                            <span class="text-sm text-gray-400">
+                            <span class="text-xs text-gray-400 ml-2 whitespace-nowrap">
                                 {{ $elev->created_at->diffForHumans() }}
                             </span>
                         </div>
@@ -120,9 +120,9 @@
     </div>
     
     <!-- Note Recente -->
-    <div class="mt-8 bg-white rounded-lg shadow">
-        <div class="px-6 py-4 border-b flex justify-between items-center">
-            <h3 class="text-lg font-semibold">Note Adăugate Recent</h3>
+    <div class="mt-4 md:mt-8 bg-white rounded-lg shadow">
+        <div class="px-4 md:px-6 py-3 md:py-4 border-b flex justify-between items-center">
+            <h3 class="text-base md:text-lg font-semibold">Note Adăugate Recent</h3>
             <a href="{{ route('note.index') }}" class="text-blue-600 hover:text-blue-800 text-sm">Vezi toate →</a>
         </div>
         
@@ -130,24 +130,29 @@
             <table class="w-full">
                 <thead class="bg-gray-50">
                     <tr>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Elev</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Materie</th>
-                        <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Nota</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Data</th>
+                        <th class="px-3 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Elev</th>
+                        <th class="px-3 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase hidden sm:table-cell">Materie</th>
+                        <th class="px-3 md:px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Nota</th>
+                        <th class="px-3 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase hidden md:table-cell">Data</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
                     @forelse($note_recenți as $nota)
                         <tr>
-                            <td class="px-6 py-4">{{ $nota->elev->nume_complet ?? 'N/A' }}</td>
-                            <td class="px-6 py-4">{{ $nota->materie->nume ?? 'N/A' }}</td>
-                            <td class="px-6 py-4 text-center">
-                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-sm font-medium 
+                            <td class="px-3 md:px-6 py-3 md:py-4">
+                                <div>
+                                    <p class="font-medium text-sm md:text-base">{{ $nota->elev->nume_complet ?? 'N/A' }}</p>
+                                    <p class="text-xs text-gray-500 sm:hidden">{{ $nota->materie->nume ?? 'N/A' }}</p>
+                                </div>
+                            </td>
+                            <td class="px-3 md:px-6 py-3 md:py-4 hidden sm:table-cell">{{ $nota->materie->nume ?? 'N/A' }}</td>
+                            <td class="px-3 md:px-6 py-3 md:py-4 text-center">
+                                <span class="inline-flex items-center px-2 md:px-2.5 py-0.5 rounded-full text-xs md:text-sm font-medium 
                                     {{ $nota->nota >= 8 ? 'bg-green-100 text-green-800' : ($nota->nota >= 5 ? 'bg-yellow-100 text-yellow-800' : 'bg-red-100 text-red-800') }}">
                                     {{ $nota->nota }}
                                 </span>
                             </td>
-                            <td class="px-6 py-4 text-sm text-gray-500">{{ $nota->data->format('d.m.Y') }}</td>
+                            <td class="px-3 md:px-6 py-3 md:py-4 text-xs md:text-sm text-gray-500 hidden md:table-cell">{{ $nota->data->format('d.m.Y') }}</td>
                         </tr>
                     @empty
                         <tr>
@@ -160,25 +165,25 @@
     </div>
     
     <!-- Acțiuni Rapide -->
-    <div class="mt-8 grid grid-cols-1 md:grid-cols-4 gap-4">
-        <a href="{{ route('clase.create') }}" class="bg-blue-600 hover:bg-blue-700 text-white rounded-lg p-4 text-center transition">
-            <i class="fas fa-plus-circle text-2xl mb-2"></i>
-            <p>Adaugă Clasă</p>
+    <div class="mt-4 md:mt-8 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+        <a href="{{ route('clase.create') }}" class="bg-blue-600 hover:bg-blue-700 text-white rounded-lg p-3 md:p-4 text-center transition">
+            <i class="fas fa-plus-circle text-xl md:text-2xl mb-1 md:mb-2"></i>
+            <p class="text-sm md:text-base">Adaugă Clasă</p>
         </a>
         
-        <a href="{{ route('elevi.create') }}" class="bg-green-600 hover:bg-green-700 text-white rounded-lg p-4 text-center transition">
-            <i class="fas fa-user-plus text-2xl mb-2"></i>
-            <p>Înscrie Elev</p>
+        <a href="{{ route('elevi.create') }}" class="bg-green-600 hover:bg-green-700 text-white rounded-lg p-3 md:p-4 text-center transition">
+            <i class="fas fa-user-plus text-xl md:text-2xl mb-1 md:mb-2"></i>
+            <p class="text-sm md:text-base">Înscrie Elev</p>
         </a>
         
-        <a href="{{ route('profesori.create') }}" class="bg-purple-600 hover:bg-purple-700 text-white rounded-lg p-4 text-center transition">
-            <i class="fas fa-user-tie text-2xl mb-2"></i>
-            <p>Adaugă Profesor</p>
+        <a href="{{ route('profesori.create') }}" class="bg-purple-600 hover:bg-purple-700 text-white rounded-lg p-3 md:p-4 text-center transition">
+            <i class="fas fa-user-tie text-xl md:text-2xl mb-1 md:mb-2"></i>
+            <p class="text-sm md:text-base">Adaugă Profesor</p>
         </a>
         
-        <a href="{{ route('note.create') }}" class="bg-red-600 hover:bg-red-700 text-white rounded-lg p-4 text-center transition">
-            <i class="fas fa-plus text-2xl mb-2"></i>
-            <p>Adaugă Notă</p>
+        <a href="{{ route('note.create') }}" class="bg-red-600 hover:bg-red-700 text-white rounded-lg p-3 md:p-4 text-center transition">
+            <i class="fas fa-plus text-xl md:text-2xl mb-1 md:mb-2"></i>
+            <p class="text-sm md:text-base">Adaugă Notă</p>
         </a>
     </div>
 @endsection
